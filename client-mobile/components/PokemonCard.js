@@ -76,7 +76,7 @@ export default function PokemonCard({ pokemons, navigation }) {
 
     return (
         <TouchableOpacity onPress={() => navigation.navigate("DetailPage", {
-            pokemonsName: pokemons.name
+            pokemonName: pokemons.name
         })}>
             {loading ? ((<Image style={{ width: 300, height: 300, marginTop: Dimensions.get('window').height * 0.2 }} source={{ uri: "https://static.wixstatic.com/media/3a2cb4_63eebbbf6f204a38a1eec5c2d55e6301~mv2.gif" }} />)) :
                 <View style={styles.background}>
