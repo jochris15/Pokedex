@@ -35,22 +35,19 @@ export default function PokemonPage({ navigation }) {
 
     const nextPage = () => {
         setOffset(offset + 20)
-        fetchPokemons()
     }
 
     const previousPage = () => {
         if (offset == 0) {
             setOffset(0)
-            fetchPokemons()
         } else {
             setOffset(offset - 20)
-            fetchPokemons()
         }
     }
 
     useEffect(() => {
         fetchPokemons()
-    }, [])
+    }, [offset])
 
     const renderItem = ({ item }) => {
         return <PokemonCard key={item.name} pokemons={item} navigation={navigation} />
@@ -80,8 +77,8 @@ export default function PokemonPage({ navigation }) {
                         ListFooterComponent={
                             <>
                                 <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
-                                    <Button mode="elevated" style={{ margin: 10 }} buttonColor="#ffcb05" textColor="#2b73b9" onPress={() => previousPage()}>Previous Page</Button>
-                                    <Button mode="elevated" style={{ margin: 10 }} buttonColor="#ffcb05" textColor="#2b73b9" onPress={() => nextPage()}>Next Page</Button>
+                                    <Button mode="elevated" style={{ margin: 10 }} buttonColor="#ffcb05" onPress={() => previousPage()}>Previous Page</Button>
+                                    <Button mode="elevated" style={{ margin: 10 }} buttonColor="#ffcb05" onPress={() => nextPage()}>Next Page</Button>
                                 </View>
                             </>
                         }
