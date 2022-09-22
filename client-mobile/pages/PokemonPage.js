@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View, Image, Dimensions } from 'react-native';
+import { Button } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import PokemonCard from '../components/PokemonCard';
 
@@ -9,9 +10,10 @@ const LogoHeight = Dimensions.get('window').height * 0.09
 export default function PokemonPage({ navigation }) {
     const [pokemons, setPokemons] = useState()
     const [loading, setLoading] = useState(true)
+    const [offset, setOffset] = useState(0)
 
     const fetchPokemons = () => {
-        fetch('https://pokeapi.co/api/v2/pokemon')
+        fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`)
             .then((res) => {
                 if (!res.ok) {
                     return res.json().then((msg) => {
@@ -31,6 +33,21 @@ export default function PokemonPage({ navigation }) {
             })
     }
 
+    const nextPage = () => {
+        setOffset(offset + 20)
+        fetchPokemons()
+    }
+
+    const previousPage = () => {
+        if (offset == 0) {
+            setOffset(0)
+            fetchPokemons()
+        } else {
+            setOffset(offset - 20)
+            fetchPokemons()
+        }
+    }
+
     useEffect(() => {
         fetchPokemons()
     }, [])
@@ -42,7 +59,7 @@ export default function PokemonPage({ navigation }) {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.background}>
-                {loading ? ((<Image style={{ width: 300, height: 300, marginTop: Dimensions.get('window').height * 0.2 }} source={{ uri: "https://static.wixstatic.com/media/3a2cb4_63eebbbf6f204a38a1eec5c2d55e6301~mv2.gif" }} />)) :
+                {loading ? ((<Image style={{ width: 300, height: 300, marginTop: Dimensions.get('window').height * 0.2 }} source={{ uri: "https://raw.githubusercontent.com/gabriel-roque/design/master/pikachu_run.gif" }} />)) :
                     (<FlatList
                         data={pokemons}
                         renderItem={renderItem}
@@ -58,6 +75,14 @@ export default function PokemonPage({ navigation }) {
                                         margin: 5,
                                     }}
                                 />
+                            </>
+                        }
+                        ListFooterComponent={
+                            <>
+                                <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
+                                    <Button mode="elevated" style={{ margin: 10 }} buttonColor="#ffcb05" textColor="#2b73b9" onPress={() => previousPage()}>Previous Page</Button>
+                                    <Button mode="elevated" style={{ margin: 10 }} buttonColor="#ffcb05" textColor="#2b73b9" onPress={() => nextPage()}>Next Page</Button>
+                                </View>
                             </>
                         }
                     />)

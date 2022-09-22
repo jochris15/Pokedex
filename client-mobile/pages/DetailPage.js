@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { FlatList, StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { Button, Card } from 'react-native-paper';
 
 export default function DetailPage({ navigation, route }) {
     const { pokemonName } = route.params;
@@ -101,7 +101,7 @@ export default function DetailPage({ navigation, route }) {
         <SafeAreaView style={{ flex: 1 }}>
             <View style={styles.background}>
                 <ScrollView>
-                    {loading ? ((<Image style={{ width: 300, height: 300, marginTop: Dimensions.get('window').height * 0.2 }} source={{ uri: "https://static.wixstatic.com/media/3a2cb4_63eebbbf6f204a38a1eec5c2d55e6301~mv2.gif" }} />)) :
+                    {loading ? ((<Image style={{ width: 300, height: 300, marginTop: Dimensions.get('window').height * 0.2 }} source={{ uri: "https://raw.githubusercontent.com/gabriel-roque/design/master/pikachu_run.gif" }} />)) :
                         (
                             <Card style={styleConditionalCard()}>
                                 <Card.Content style={{ margin: 10, alignItems: 'center' }}>
