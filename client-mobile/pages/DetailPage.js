@@ -68,6 +68,14 @@ export default function DetailPage({ navigation, route }) {
             return styles.card2
         } else if (pokemonDetail.types[0] === "water") {
             return styles.card3
+        } else if (pokemonDetail.types[0] === "bug") {
+            return styles.card4
+        } else if (pokemonDetail.types[0] === "poison") {
+            return styles.card5
+        } else if (pokemonDetail.types[0] === "electric") {
+            return styles.card6
+        } else if (pokemonDetail.types[0] === "fairy") {
+            return styles.card7
         } else {
             return styles.card
         }
@@ -80,6 +88,14 @@ export default function DetailPage({ navigation, route }) {
             return styles.image2
         } else if (pokemonDetail.types[0] === "water") {
             return styles.image3
+        } else if (pokemonDetail.types[0] === "bug") {
+            return styles.image4
+        } else if (pokemonDetail.types[0] === "poison") {
+            return styles.image5
+        } else if (pokemonDetail.types[0] === "electric") {
+            return styles.image6
+        } else if (pokemonDetail.types[0] === "fairy") {
+            return styles.image7
         } else {
             return styles.image
         }
@@ -92,6 +108,14 @@ export default function DetailPage({ navigation, route }) {
             return "#61e2c8"
         } else if (pokemonDetail.types[0] === "water") {
             return "#91d1ff"
+        } else if (pokemonDetail.types[0] === "bug") {
+            return "#DABC92"
+        } else if (pokemonDetail.types[0] === "poison") {
+            return "#D094CB"
+        } else if (pokemonDetail.types[0] === "electric") {
+            return "#FFDC5F"
+        } else if (pokemonDetail.types[0] === "fairy") {
+            return "#F4A6B5"
         } else {
             return "#919191"
         }
@@ -252,6 +276,42 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         borderRadius: 20,
     },
+    card4: {
+        padding: 20,
+        backgroundColor: '#C7AE8A',
+        width: Dimensions.get('window').width * 0.9,
+        margin: 20,
+        justifyContent: 'space-between',
+        textAlign: 'center',
+        borderRadius: 20,
+    },
+    card5: {
+        padding: 20,
+        backgroundColor: '#AA7CA6',
+        width: Dimensions.get('window').width * 0.9,
+        margin: 20,
+        justifyContent: 'space-between',
+        textAlign: 'center',
+        borderRadius: 20,
+    },
+    card6: {
+        padding: 20,
+        backgroundColor: '#FCCD25',
+        width: Dimensions.get('window').width * 0.9,
+        margin: 20,
+        justifyContent: 'space-between',
+        textAlign: 'center',
+        borderRadius: 20,
+    },
+    card7: {
+        padding: 20,
+        backgroundColor: '#F2788F',
+        width: Dimensions.get('window').width * 0.9,
+        margin: 20,
+        justifyContent: 'space-between',
+        textAlign: 'center',
+        borderRadius: 20,
+    },
     image: {
         height: 300,
         margin: 10,
@@ -271,5 +331,25 @@ const styles = StyleSheet.create({
         height: 300,
         margin: 10,
         backgroundColor: '#76beff'
+    },
+    image4: {
+        height: 300,
+        margin: 10,
+        backgroundColor: '#C7AE8A'
+    },
+    image5: {
+        height: 300,
+        margin: 10,
+        backgroundColor: '#AA7CA6'
+    },
+    image6: {
+        height: 300,
+        margin: 10,
+        backgroundColor: '#FCCD25'
+    },
+    image7: {
+        height: 300,
+        margin: 10,
+        backgroundColor: '#F2788F'
     },
 });
